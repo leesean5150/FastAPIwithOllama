@@ -3,5 +3,6 @@ Include
 Lib
 Scripts
 pyvenv.cfg
+share
 __pycache__
 volumes/
