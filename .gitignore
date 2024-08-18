@@ -1,0 +1,5 @@
+.env
+/fastapi/Include
+/fastapi/Lib
+/fastapi/Scripts
+/fastapi/pyvenv.cfg
