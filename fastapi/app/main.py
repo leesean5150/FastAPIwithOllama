@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 
 from .routes.llm.ask import ask_router
+from .routes.auth.user import user_router
+
 from db.milvus_loader import connect_to_milvus, create_collection
 from db.postgres import init_db, get_connection, get_session_local
 from app.models.auth.user import User
@@ -35,10 +37,11 @@ def query_psycopg():
         print(result)
     return {"result": result}
 
-@app.get("/query-with-sqlalchemy")
-def query_sqlalchemy():
-    session = get_session_local()()
-    users = session.query(User).all() 
-    return {"result": users}  
+# @app.get("/query-with-sqlalchemy")
+# def query_sqlalchemy():
+#     session = get_session_local()()
+#     users = session.query(User).all() 
+#     return {"result": users}
+app.include_router(user_router, prefix="/auth")
 
 app.include_router(ask_router, prefix="/llm")

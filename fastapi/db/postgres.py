@@ -42,7 +42,7 @@ def get_engine():
 def get_session_local():
     engine = get_engine()
     SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
-    return SessionLocal
+    return SessionLocal()
 
 def init_db():
     engine = get_engine()
